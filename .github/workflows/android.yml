@@ -24,3 +24,12 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+      
+    - name: Upload APK to Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-apk
+        path: |
+          app/build/outputs/apk/
+        if-no-files-found: error
+        retention-days: 7
